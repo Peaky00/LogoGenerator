@@ -1,22 +1,6 @@
 {
-  "name": "logogenerator",
-  "version": "1.0.0",
-  "description": "Your task is to build a Node.js command-line application that takes in user input to generate a logo and save it as an [SVG file](https://en.wikipedia.org/wiki/Scalable_Vector_Graphics). The application prompts the user to select a color and shape, provide text for the logo, and save the generated SVG to a `.svg` file.",
-  "main": "logo_generator.js",
   "dependencies": {
-    "@svgdotjs/svg.js": "^3.2.0",
-    "kleur": "^3.0.3",
-    "opentype.js": "^0.7.3",
-    "prompts": "^2.4.2",
-    "sisteransi": "^1.0.5",
-    "svg-captcha": "^1.4.0",
-    "svg.js": "^2.7.1",
-    "tiny-inflate": "^1.0.3"
-  },
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC"
+    "inquirer": "^9.2.11",
+    "svg.js": "^2.7.1"
+  }
 }

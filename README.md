@@ -38,5 +38,11 @@ Install the project dependencies:
 Bash-
 npm install
 
+Bash-
+npm install inquirer@8.2.4
+
+Bash- 
+npm install svg.js        
+
 ## License
 This project is licensed under the MIT License - see the LICENSE file for details.

@@ -1,33 +1,34 @@
 const inquirer = require('inquirer');
-const SVG = require('svg.js');
+const fs = require('fs');
 
-// Function to generate an SVG logo
-const generateLogo = async (text, textColor, shape, shapeColor) => {
-  // Create an SVG.js instance
-  const canvas = SVG().size(300, 200);
+// Function to generate an HTML file with the logo
+const generateHTML = async (text, textColor, shape, shapeColor) => {
+  const svgContent = `
+    <svg width="300" height="200" xmlns="http://www.w3.org/2000/svg">
+      <rect width="100%" height="100%" fill="${shapeColor}" />
+      <text x="150" y="100" text-anchor="middle" alignment-baseline="middle" font-size="24" fill="${textColor}">${text}</text>
+    </svg>
+  `;
 
-  // Draw the selected shape with the specified color
-  let drawnShape;
-  if (shape === 'circle') {
-    drawnShape = canvas.circle(100).center(150, 100);
-  } else if (shape === 'triangle') {
-    drawnShape = canvas.polygon('150,18 244,182 56,182');
-  } else if (shape === 'square') {
-    drawnShape = canvas.rect(100, 100).center(150, 100);
-  }
+  // Create an HTML template with the SVG content
+  const htmlContent = `
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Logo</title>
+    </head>
+    <body>
+      ${svgContent}
+    </body>
+    </html>
+  `;
 
-  drawnShape.fill(shapeColor);
+  // Save the HTML content to a file named "logo.html"
+  fs.writeFileSync('logo.html', htmlContent);
 
-  // Add the text with the specified color
-  canvas.text(text).font({ size: 24 }).fill(textColor).center(150, 100);
-
-  // Export the SVG as a string
-  const svgString = canvas.svg();
-
-  // Save the SVG to a file named "logo.svg"
-  require('fs').writeFileSync('logo.svg', svgString);
-
-  console.log('Generated logo.svg');
+  console.log('Generated logo.html');
 };
 
 // Function to start the logo generation process
@@ -62,8 +63,8 @@ const startGenerator = async () => {
     },
   ]);
 
-  // Generate the logo using user input
-  generateLogo(userInput.text, userInput.textColor, userInput.shape, userInput.shapeColor);
+  // Generate the HTML file using user input
+  generateHTML(userInput.text, userInput.textColor, userInput.shape, userInput.shapeColor);
 };
 
 // Start the logo generator

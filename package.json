@@ -1,7 +1,12 @@
 {
+  "name": "logo-generator",
+  "version": "1.0.0",
+  "description": "Generate SVG logos using svg-captcha",
+  "main": "generateLogo.js",
+  "scripts": {
+    "generate-logo": "node generateLogo.js"
+  },
   "dependencies": {
-    "@svgdotjs/svg.js": "^3.2.0",
-    "prompts": "^2.4.2",
-    "svg-captcha": "^1.4.0"
+    "svg-captcha": "^2.5.0"
   }
 }

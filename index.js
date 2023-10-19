@@ -3,9 +3,22 @@ const fs = require('fs');
 
 // Function to generate an HTML file with the logo
 const generateHTML = async (text, textColor, shape, shapeColor) => {
+  let svgShape = '';
+
+  // Define the SVG shape based on user's choice
+  if (shape === 'circle') {
+    svgShape = `<circle cx="150" cy="100" r="80" fill="${shapeColor}" />`;
+  } else if (shape === 'triangle') {
+    svgShape = `
+      <polygon points="150,20 245,180 55,180" fill="${shapeColor}" />
+    `;
+  } else if (shape === 'square') {
+    svgShape = `<rect x="50" y="50" width="200" height="200" fill="${shapeColor}" />`;
+  }
+
   const svgContent = `
     <svg width="300" height="200" xmlns="http://www.w3.org/2000/svg">
-      <rect width="100%" height="100%" fill="${shapeColor}" />
+      ${svgShape}
       <text x="150" y="100" text-anchor="middle" alignment-baseline="middle" font-size="24" fill="${textColor}">${text}</text>
     </svg>
   `;
